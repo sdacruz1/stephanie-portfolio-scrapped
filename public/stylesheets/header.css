@@ -1,0 +1,22 @@
+.header {
+    margin: 0;
+    height: 60vh;
+    /* padding: 5% 15%; */
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to left, var(--brightest-color-3), var(--backdrop-color));
+}
+
+.header-text-box {
+    padding: 5% 0% 5% 15%;
+}
+
+.header-text {
+    color: white;
+    font-size: 24px;
+}
+
+.header-sub-text {
+    color: var(--brightest-color-3);
+    font-size: 20px;
+}

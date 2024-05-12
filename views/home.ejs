@@ -5,94 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Stephanie Da Cruz</title>
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-        <style>
-            .readme_text {
-                padding: 1rem 0rem;
-            }
-
-            .skill_bubble {
-                margin: 1rem;
-                padding: 0.5rem;
-                border: 2px solid var(--brightest-color-0);
-                border-radius: 5px;
-                min-width: 5%;
-                text-align: center;
-            }
-
-            .skill_bubble:hover {
-                background-color: var(--brightest-color-1);
-                transition: 0.2s;
-            }
-
-            .problem_div {
-                height: 60vh;
-                border: 2px dashed white;
-                padding: 1rem;
-            }
-
-            .vertical_scroller {
-                height: 100%;
-                overflow-y: scroll;
-                margin: 1rem;
-            }
-
-            .image-container {
-                padding: 10px; /* Add padding for spacing between images */
-            }
-            
-            .image-container img {
-                display: block; /* Ensure images are displayed as block elements */
-                margin-bottom: 10px; /* Add margin between images */
-                max-width: 100%; /* Ensure images don't exceed container width */
-            }
-        </style>
+        <link rel="stylesheet" href="/stylesheets/styles.css">
     </head>
     <body style="background-color: var(--backdrop-color);">
-        <%
-        const tripathi_labs = {
-            workplace: 'Tripathi Bioinformatics Laboratory',
-            title: 'Website Developer and Software Engineer',
-            duration: 'Sept 2023 - Present',
-            bullet_points: ['Led the redesign and modernization of the lab website, enhancing its representation of ongoing projects and strengthening its online presence within the campus community.',
-                            'Designed and optimized the user interface (UI) and user experience (UX) for research products developed by current researchers, ensuring intuitive navigation and engagement for users.',
-                            'Developed software tailored for bioinformatics analysis, starting from conceptual workflows and progressing to the creation of a fully functional product, facilitating efficient data analysis and interpretation in research projects.',
-                            ],
-            skills: 'Express - Node.js - Wix',
-            imgs: 0
-        };
-        const ppc = {
-            workplace: 'Pawtucket Primary Care',
-            title: 'Software Engineer',
-            duration: 'Jun 2023 - Sept 2023',
-            bullet_points: ['Spearheaded the design and launch of the Pawtucket Primary Care website, overseeing branding initiatives and developing marketing materials to enhance brand visibility and engagement.',
-                            'Managed social media channels and executed targeted advertising campaigns, driving customer acquisition and retention efforts.',
-                            'Cultivated strong client and provider relationships, ensuring exceptional service delivery and client satisfaction.',
-                            'Organized and maintained documentation, including filling out forms and handling administrative tasks to streamline operations and ensure compliance.'],
-            skills: 'Github - React (+Typescript) - Google SEO',
-            imgs: 1
-        };
-        const ipp = {
-            workplace: 'Industry Partners Program',
-            title: 'Software Engineer',
-            duration: 'Oct 2022 - May 2023',
-            bullet_points: ['Collaborated within a small team to conceptualize and develop a website, ensuring a seamless user experience throughout the design and implementation phases.',
-                            'Utilized Figma to create and refine wireframes, translating design concepts into interactive prototypes.',
-                            'Employed React.js to code the website, integrating a Firebase database for dynamic content management and real-time updates.',
-                            'Implemented version control and deployment strategies using Github, ensuring code integrity and facilitating team collaboration in a distributed development environment.'],
-            skills: 'Github - Firebase - React',
-            imgs: 2
-        };
-        const skills = ['English, Spanish, French', 'Github', 'Figma', 'Adobe Creative Cloud', 'Procreate', 'Google SEO',
-                        'React', 'Typescript', 'Javascript', 'HTML/CSS', 'Node.js', 'Express',
-                        'Firebase', 'SQL', 'GoLang', 'Python', 'C/C+', 'Unity', 'Maya', 'Blender', 'MongoDB'];
 
-        const imageArrays =  [
-            ['/images/tripathi_imgs/home.png', '/images/tripathi_imgs/people.png', '/images/tripathi_imgs/pubs.png'],
-            ['/images/ppc_imgs/Home.png', '/images/ppc_imgs/Logos.png', '/images/ppc_imgs/Services.png'],
-            ['/images/ipp_imgs/FinalMockup.png', '/images/ipp_imgs/DesignGuide.png', '/images/ipp_imgs/EarlyDesigns.png']
-        ];
-        %>
-        
         <%- include('components/header') %>
 
         <div style="padding: 5% 10%;">
@@ -105,8 +21,8 @@
                 degree in Computer Science at Brown University.</p>
                 
             <p class="readme_text">Today I am grateful for the continuous opportunities since my sophomore year in 2022 to contribute my skills
-            within professional teams. My expertise centers on crafting compelling online presences for the teams and institutions behind groundbreaking
-            projects. Occasionally, I also contribute to the development of these innovative programs.</p>
+                towards professional teams. My expertise centers on crafting compelling online presences for the teams and institutions behind
+                groundbreaking projects. Occasionally, I also contribute to the development of these innovative programs.</p>
 
             <h2>** Experience **</h2>
 
@@ -117,7 +33,6 @@
                     <%- include('components/experience_bubble', { experienceData: ipp }) %>
                 </div>
                 <div class="vertical_scroller">
-                    <!-- Do a for loop to render a list of images, selected based on which of the bubbles is active -->
                     <div class="image-container"></div>
                 </div>
             </div>
@@ -141,6 +56,7 @@
         
         const bubbles = document.querySelectorAll('.experience_bubble');
 
+        // When a bubble is clicked, highlight it and load its image gallery
         bubbles.forEach(bubble => {
             bubble.addEventListener('click', () => {
                 // Remove 'selected' class from all bubbles
@@ -158,6 +74,21 @@
             });
         });
 
+        // A function to preload the images so that they don't jitter upon first access
+        function preloadImages(activeIndex) {
+            image_arrays[activeIndex].forEach(imagePath => {
+                const img = new Image();
+                img.src = imagePath;
+            });
+        }
+
+        // Preload images on DOM content load
+        document.addEventListener('DOMContentLoaded', () => {
+            preloadImages(1);
+            preloadImages(2);
+        });
+
+        // Render the work examples image gallery
         const imageContainer = document.querySelector('.image-container');
         const image_arrays = JSON.parse('<%- JSON.stringify(imageArrays) %>');
 
@@ -167,7 +98,7 @@
             image_arrays[activeIndex].forEach(imagePath => {
                 const img = document.createElement('img');
                 img.src = imagePath;
-                img.alt = 'Image';
+                img.alt = 'Work Example Image';
                 imageContainer.appendChild(img);
             });
         }

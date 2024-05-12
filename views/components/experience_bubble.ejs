@@ -7,7 +7,7 @@
     </div>
     <p class="experience_title"><%= experienceData.title %></p>
     <ul class="experience_point_list">
-        <!-- foreach thing in experienceData.bullet_points make a new list item -->
+        <!-- foreach element in experienceData.bullet_points make a new list item -->
         <% experienceData.bullet_points.forEach(function(point) { %>
             <li class="experience_point"><i><%= point %></i></li>
             <br>
