@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/stylesheets/experience_bubble.css">
+
+<div class="experience_bubble"  data-array="<%=experienceData.imgs %>">
+    <div style="display: flex; justify-content: space-between;">
+        <h3 class="experience_workplace"><b><%= experienceData.workplace %></b></h3>
+        <p class="experience_duration"><i><%= experienceData.duration %></i></p>
+    </div>
+    <p class="experience_title"><%= experienceData.title %></p>
+    <ul class="experience_point_list">
+        <!-- foreach thing in experienceData.bullet_points make a new list item -->
+        <% experienceData.bullet_points.forEach(function(point) { %>
+            <li class="experience_point"><i><%= point %></i></li>
+            <br>
+        <% }); %>
+    </ul>
+    <p class="experience_skills"><b><%= experienceData.skills %></b></p>
+</div>

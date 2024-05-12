@@ -1,0 +1,46 @@
+.experience_bubble {
+    height: auto;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    padding: 2rem;
+}
+
+.experience_bubble:hover {
+    background-color: rgba(222, 235, 238, 0.2);
+    transition: 0.2s;
+    box-shadow: 0 4px 10px var(--brightest-color-1);
+
+}
+
+.focus {
+    background-color: rgba(222, 235, 238, 0.2);
+    box-shadow: 0 4px 10px var(--brightest-color-1);
+}
+
+.experience_workplace {
+    font-size: 20px;
+    color: var(--text-color);
+}
+.experience_title {
+    font-size: 16px;
+    color: var(--brightest-color-3);
+}
+.experience_duration {
+    font-size: 20px;
+    color: var(--brightest-color-3);
+}
+.experience_point_list {
+    margin: 1rem 0rem;
+}
+.experience_point {
+    font-size: 16px;
+    font-weight: 200;
+    color: var(--brightest-color-1);
+}
+.experience_skills {
+    width: 100%;
+    text-align: right;
+    font-size: 16px;
+    color: var(--brightest-color-3);
+}

@@ -1,0 +1,30 @@
+:root {
+    --backdrop-color: #101634;
+    --text-color: white;
+    --main-color: #9290EC;
+    --brightest-color-0: #DEEBEE;
+    --brightest-color-1: #93BDFC;
+    --brightest-color-2: #93B0FC;
+    --brightest-color-3: #93A4FC;
+  }
+
+* {
+  margin: 0;
+  font-family:sans-serif;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 200;
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: 48px;
+  color: white;
+}
+
+h2 {
+  color: var(--text-color);
+  margin: 1rem 0rem;
+}
